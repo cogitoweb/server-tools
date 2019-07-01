@@ -101,9 +101,3 @@ class ResUsers(models.Model):
                 _logger.exception(
                     'Exception updating session file access/modified times.',
                 )
-
-    def _compute_session_token(self, sid):
-        res = super(ResUsers, self)._compute_session_token(sid)
-        if http.request:
-            http.request.env.user._auth_timeout_check()
-        return res
