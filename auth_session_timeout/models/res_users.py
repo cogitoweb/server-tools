@@ -67,24 +67,27 @@ class ResUsers(models.Model):
 
         # Check if past deadline
         expired = False
+        exist = True
         if deadline is not False:
             path = http.root.session_store.get_session_filename(session.sid)
             try:
                 expired = getmtime(path) < deadline
             except OSError as e:
-                _logger.exception(
+                _logger.info(
                     'Exception reading session file modified time.',
                 )
-                # Force expire the session. Will be resolved with new session.
+                # do not force expire the session
+                # mark as non existent
+                exist = False
                 expired = True
 
         # Try to terminate the session
         terminated = False
-        if expired:
+        if expired and exist:
             terminated = self._auth_timeout_session_terminate(session)
 
         # If session terminated, all done
-        if terminated:
+        if terminated or not exist:
             return
 
         # Else, conditionally update session modified and access times
