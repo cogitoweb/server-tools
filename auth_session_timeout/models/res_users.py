@@ -10,6 +10,7 @@ from time import time
 from os import utime
 
 from odoo import api, http, models
+from odoo.http import SessionExpiredException
 
 _logger = logging.getLogger(__name__)
 
@@ -85,6 +86,7 @@ class ResUsers(models.Model):
         terminated = False
         if expired and exist:
             terminated = self._auth_timeout_session_terminate(session)
+            raise SessionExpiredException()
 
         # If session terminated, all done
         if terminated or not exist:
