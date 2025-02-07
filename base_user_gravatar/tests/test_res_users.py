@@ -47,7 +47,7 @@ class TestResUsers(TransactionCase):
         result = self.model_obj._get_gravatar_base64(
             self.partner_vals['email']
         )
-        self.assertEquals(expect, result)
+        self.assertEqual(expect, result)
 
     def test_get_gravatar_image_writes_image(self, ):
         """ Test that the resulting gravatar is written to user """

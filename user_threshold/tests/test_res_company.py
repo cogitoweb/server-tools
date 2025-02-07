@@ -21,7 +21,7 @@ class TestResCompany(Common):
         c = self.env['res.company'].browse(1)
         ret = c.fields_view_get(view.id)
         doc = etree.XML(ret['arch'])
-        self.assertEquals(doc.xpath("//field[@name='max_users']"), [])
+        self.assertEqual(doc.xpath("//field[@name='max_users']"), [])
 
     def test_can_write_max_users(self):
         """
@@ -32,7 +32,7 @@ class TestResCompany(Common):
         c = self.env['res.company'].browse(1)
         res = 10
         c.sudo(u.id).write({'max_users': res})
-        self.assertEquals(c.max_users, res)
+        self.assertEqual(c.max_users, res)
 
     def test_cannot_write_max_users(self):
         """

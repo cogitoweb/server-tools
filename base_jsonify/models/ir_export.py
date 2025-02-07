@@ -34,7 +34,7 @@ def convert_dict(dict_parser):
     tuples.
     """
     parser = []
-    for field, value in dict_parser.iteritems():
+    for field, value in dict_parser.items():
         if value is True:
             parser.append(field)
         else:

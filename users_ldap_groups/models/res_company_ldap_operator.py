@@ -25,7 +25,7 @@ class ResCompanyLdapOperator(models.AbstractModel):
 
     def equals(self, ldap_entry, mapping):
         return mapping.ldap_attribute in ldap_entry[1] and \
-            unicode(mapping.value) == unicode(
+            str(mapping.value) == str(
                 ldap_entry[1][mapping.ldap_attribute]
             )
 

@@ -124,7 +124,7 @@ def post_load_hook():
 
     this = graph['base_manifest_extension']
     to_reload = []
-    for node in graph.itervalues():
+    for node in graph.values():
         if node.depth > this.depth:
             to_reload.append(node.name)
     for module_name in to_reload:

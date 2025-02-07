@@ -39,7 +39,7 @@ class TestIrSequenceDateRange(TransactionCase):
         into the date_to field (instead of date_from)
         :return:
         """
-        self.assertEquals(self.sequence.date_range_field, 'date_to')
+        self.assertEqual(self.sequence.date_range_field, 'date_to')
         current_date_range = self._get_current_date_range()
         date_to = fields.Date.from_string(current_date_range.date_to)
         value = self.sequence._next()
@@ -57,7 +57,7 @@ class TestIrSequenceDateRange(TransactionCase):
         self.sequence.write({
             'date_range_field': 'date_from',
         })
-        self.assertEquals(self.sequence.date_range_field, 'date_from')
+        self.assertEqual(self.sequence.date_range_field, 'date_from')
         current_date_range = self._get_current_date_range()
         date_from = fields.Date.from_string(current_date_range.date_from)
         value = self.sequence._next()

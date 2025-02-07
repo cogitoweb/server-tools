@@ -151,8 +151,8 @@ class PartnerCase(TransactionCase):
         val = self.agrolait.get_custom_info_value(
             self.env.ref("base_custom_info.prop_teacher"))
         with self.assertRaises(ValidationError):
-            val.value = (u"Don Walter Antonio José de la Cruz Hëisenberg de "
-                         u"Borbón Westley Jordy López Manuélez")
+            val.value = ("Don Walter Antonio José de la Cruz Hëisenberg de "
+                         "Borbón Westley Jordy López Manuélez")
 
     def test_low_average_note(self):
         """Come on, you are supposed to be smart!"""

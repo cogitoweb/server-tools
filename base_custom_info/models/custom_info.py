@@ -36,10 +36,10 @@ class CustomInfo(models.AbstractModel):
     def onchange(self, values, field_name, field_onchange):  # pragma: no cover
         x2many_field = 'custom_info_ids'
         if x2many_field in field_onchange:
-            subfields = getattr(self, x2many_field)._fields.keys()
+            subfields = list(getattr(self, x2many_field)._fields.keys())
             for subfield in subfields:
                 field_onchange.setdefault(
-                    u"{}.{}".format(x2many_field, subfield), u"",
+                    "{}.{}".format(x2many_field, subfield), "",
                 )
         return super(CustomInfo, self).onchange(
             values, field_name, field_onchange,

@@ -96,7 +96,7 @@ class Webhook(models.Model):
             _logger.debug(
                 'python_code "%s" with dict [%s] error [%s]',
                 python_code, eval_dict, error)
-        if isinstance(res, basestring):
+        if isinstance(res, str):
             res = tools.ustr(res)
         return res
 
@@ -131,7 +131,7 @@ class Webhook(models.Model):
         """
         self.ensure_one()
         for address in self.address_ids:
-            ipn = ipaddress.ip_network(u'' + address.name)
+            ipn = ipaddress.ip_network('' + address.name)
             hosts = [host.exploded for host in ipn.hosts()]
             hosts.append(address.name)
             if remote_address in hosts:

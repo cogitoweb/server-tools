@@ -17,7 +17,7 @@ class IrActionsReport(models.Model):
             from unidecode import unidecode
         except ImportError:
             _logger.debug('Can not `import unidecode`.')
-        text = unidecode(unicode(text))
+        text = unidecode(str(text))
         text.lower()
         return text.encode('iso-8859-1')
 

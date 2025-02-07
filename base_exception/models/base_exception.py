@@ -221,10 +221,10 @@ class BaseException(models.AbstractModel):
             model_exceptions, sub_exceptions, optimize)
 
         all_exception_ids = []
-        for obj, exception_ids in exception_by_rec.iteritems():
+        for obj, exception_ids in exception_by_rec.items():
             obj.exception_ids = [(6, 0, exception_ids)]
             all_exception_ids += exception_ids
-        for rule, exception_ids in exception_by_rule.iteritems():
+        for rule, exception_ids in exception_by_rule.items():
             rule[reverse_field] = [(6, 0, exception_ids.ids)]
             if exception_ids:
                 all_exception_ids += [rule.id]
@@ -254,7 +254,7 @@ class BaseException(models.AbstractModel):
                       space,
                       mode='exec',
                       nocopy=True)  # nocopy allows to return 'result'
-        except Exception, e:
+        except Exception as e:
             raise UserError(
                 _('Error when evaluating the exception.rule '
                   'rule:\n %s \n(%s)') % (rule.name, e))

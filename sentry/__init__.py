@@ -28,7 +28,7 @@ def get_odoo_commit(odoo_dir):
         return raven.fetch_git_sha(odoo_dir)
     except raven.exceptions.InvalidGitRepository:
         _logger.debug(
-            u'Odoo directory: "%s" not a valid git repository', odoo_dir)
+            'Odoo directory: "%s" not a valid git repository', odoo_dir)
 
 
 def initialize_raven(config, client_cls=None):

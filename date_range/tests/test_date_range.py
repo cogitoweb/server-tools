@@ -91,7 +91,7 @@ class DateRangeTest(TransactionCase):
             'date_end': '2016-12-31',
             'type_id': self.type.id,
         })
-        self.assertEquals(dr.name, 'FS2016')
+        self.assertEqual(dr.name, 'FS2016')
 
     def test_domain(self):
         dr = self.date_range.create({
@@ -102,7 +102,7 @@ class DateRangeTest(TransactionCase):
         })
         domain = dr.get_domain('my_field')
         # By default the domain include limits
-        self.assertEquals(
+        self.assertEqual(
             domain,
             [('my_field', '>=', '2015-01-01'),
              ('my_field', '<=', '2015-12-31')])

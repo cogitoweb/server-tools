@@ -45,42 +45,42 @@ class AuditlogRule(models.Model):
     _name = 'auditlog.rule'
     _description = "Auditlog - Rule"
 
-    name = fields.Char(u"Name", size=32, required=True)
+    name = fields.Char("Name", size=32, required=True)
     model_id = fields.Many2one(
-        'ir.model', u"Model", required=True,
-        help=u"Select model for which you want to generate log.")
+        'ir.model', "Model", required=True,
+        help="Select model for which you want to generate log.")
     user_ids = fields.Many2many(
         'res.users',
         'audittail_rules_users',
         'user_id', 'rule_id',
-        string=u"Users",
-        help=u"if  User is not added then it will applicable for all users")
+        string="Users",
+        help="if  User is not added then it will applicable for all users")
     log_read = fields.Boolean(
-        u"Log Reads",
-        help=(u"Select this if you want to keep track of read/open on any "
-              u"record of the model of this rule"))
+        "Log Reads",
+        help=("Select this if you want to keep track of read/open on any "
+              "record of the model of this rule"))
     log_write = fields.Boolean(
-        u"Log Writes", default=True,
-        help=(u"Select this if you want to keep track of modification on any "
-              u"record of the model of this rule"))
+        "Log Writes", default=True,
+        help=("Select this if you want to keep track of modification on any "
+              "record of the model of this rule"))
     log_unlink = fields.Boolean(
-        u"Log Deletes", default=True,
-        help=(u"Select this if you want to keep track of deletion on any "
-              u"record of the model of this rule"))
+        "Log Deletes", default=True,
+        help=("Select this if you want to keep track of deletion on any "
+              "record of the model of this rule"))
     log_create = fields.Boolean(
-        u"Log Creates", default=True,
-        help=(u"Select this if you want to keep track of creation on any "
-              u"record of the model of this rule"))
+        "Log Creates", default=True,
+        help=("Select this if you want to keep track of creation on any "
+              "record of the model of this rule"))
     log_type = fields.Selection(
-        [('full', u"Full log"),
-         ('fast', u"Fast log"),
+        [('full', "Full log"),
+         ('fast', "Fast log"),
          ],
-        string=u"Type", required=True, default='full',
-        help=(u"Full log: make a diff between the data before and after "
-              u"the operation (log more info like computed fields which were "
-              u"updated, but it is slower)\n"
-              u"Fast log: only log the changes made through the create and "
-              u"write operations (less information, but it is faster)"))
+        string="Type", required=True, default='full',
+        help=("Full log: make a diff between the data before and after "
+              "the operation (log more info like computed fields which were "
+              "updated, but it is slower)\n"
+              "Fast log: only log the changes made through the create and "
+              "write operations (less information, but it is faster)"))
     # log_action = fields.Boolean(
     #     "Log Action",
     #     help=("Select this if you want to keep track of actions on the "
@@ -91,7 +91,7 @@ class AuditlogRule(models.Model):
     #           "record of the model of this rule"))
     state = fields.Selection(
         [('draft', "Draft"), ('subscribed', "Subscribed")],
-        string=u"State", required=True, default='draft')
+        string="State", required=True, default='draft')
     action_id = fields.Many2one(
         'ir.actions.act_window', string="Action")
 
@@ -248,7 +248,7 @@ class AuditlogRule(models.Model):
             # Old API
             if args and isinstance(args[0], sql_db.Cursor):
                 cr, uid, ids = args[0], args[1], args[2]
-                if isinstance(ids, (int, long)):
+                if isinstance(ids, int):
                     ids = [ids]
                 # If the call came from auditlog itself, skip logging:
                 # avoid logs on `read` produced by auditlog during internal
@@ -307,7 +307,7 @@ class AuditlogRule(models.Model):
             # afterwards as it could not represent the real state
             # of the data in the database
             vals2 = dict(vals)
-            old_vals2 = dict.fromkeys(vals2.keys(), False)
+            old_vals2 = dict.fromkeys(list(vals2.keys()), False)
             old_values = dict((id_, old_vals2) for id_ in self.ids)
             new_values = dict((id_, vals2) for id_ in self.ids)
             result = write_fast.origin(self, vals, **kwargs)
@@ -382,7 +382,7 @@ class AuditlogRule(models.Model):
                 self._create_log_line_on_create(log, diff.added(), new_values)
             elif method is 'read':
                 self._create_log_line_on_read(
-                    log, old_values.get(res_id, EMPTY_DICT).keys(), old_values)
+                    log, list(old_values.get(res_id, EMPTY_DICT).keys()), old_values)
             elif method is 'write':
                 self._create_log_line_on_write(
                     log, diff.changed(), old_values, new_values)
@@ -533,7 +533,7 @@ class AuditlogRule(models.Model):
             domain = "[('model_id', '=', %s), ('res_id', '=', active_id)]" % (
                 rule.model_id.id)
             vals = {
-                'name': _(u"View logs"),
+                'name': _("View logs"),
                 'res_model': 'auditlog.log',
                 'src_model': rule.model_id.model,
                 'domain': domain,

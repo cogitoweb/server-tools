@@ -23,7 +23,7 @@ class TestIrConfigParameter(Common):
         self._add_user_to_group(u)
         exp = '20'
         mdl.sudo(u.id).set_param(MAX_DB_USER_PARAM, exp)
-        self.assertEquals(mdl.get_param(MAX_DB_USER_PARAM), exp)
+        self.assertEqual(mdl.get_param(MAX_DB_USER_PARAM), exp)
 
     def test_cannot_set(self):
         """
@@ -68,7 +68,7 @@ class TestIrConfigParameter(Common):
         param = self._get_param()
         res = '10'
         param.sudo(u.id).write({'value': res})
-        self.assertEquals(param.value, res)
+        self.assertEqual(param.value, res)
 
     def test_cannot_write(self):
         """

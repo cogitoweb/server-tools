@@ -6,7 +6,7 @@
 
 import re
 import uuid
-import StringIO
+import io
 import base64
 from psycopg2 import ProgrammingError
 
@@ -167,7 +167,7 @@ class SQLRequestMixin(models.AbstractModel):
             rollback_name = self._create_savepoint()
         try:
             if mode == 'stdout':
-                output = StringIO.StringIO()
+                output = io.StringIO()
                 self.env.cr.copy_expert(query, output)
                 output.getvalue()
                 res = base64.b64encode(output.getvalue())

@@ -36,6 +36,6 @@ class AuditlogAutovacuum(models.TransientModel):
             nb_records = len(records)
             records.unlink()
             _logger.info(
-                u"AUTOVACUUM - %s '%s' records deleted",
+                "AUTOVACUUM - %s '%s' records deleted",
                 nb_records, data_model)
         return True

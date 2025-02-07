@@ -51,7 +51,7 @@ class FormatterCase(TransactionCase):
         self.assertEqual(
             self.expected,
             self.rl.datetime_formatter(
-                unicode(self.dt_str),
+                str(self.dt_str),
                 **self.kwargs))
 
         super(FormatterCase, self).tearDown()

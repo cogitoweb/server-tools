@@ -4,10 +4,10 @@
 
 import json
 import logging
-from urllib2 import urlopen
+from urllib.request import urlopen
 from odoo import api, fields, models
 
-GEOLOCALISATION_URL = u"http://ip-api.com/json/{}"
+GEOLOCALISATION_URL = "http://ip-api.com/json/{}"
 
 _logger = logging.getLogger(__name__)
 
@@ -51,7 +51,7 @@ class ResAuthenticationAttempt(models.Model):
                 )
             else:
                 item.remote_metadata = "\n".join(
-                    '%s: %s' % pair for pair in res.items())
+                    '%s: %s' % pair for pair in list(res.items()))
 
     @api.multi
     def _compute_whitelisted(self):

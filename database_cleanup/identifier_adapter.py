@@ -20,4 +20,4 @@ class IdentifierAdapter(ISQLQuote):
         format_string = '"%s"'
         if not self.quote:
             format_string = '%s'
-        return format_string % filter(is_identifier_char, self.identifier)
+        return format_string % list(filter(is_identifier_char, self.identifier))

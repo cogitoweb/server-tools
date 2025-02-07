@@ -43,7 +43,7 @@ def patch_leaf_trgm(method):
             if left in model._fields:
                 params = str(right)
 
-            if isinstance(params, basestring):
+            if isinstance(params, str):
                 params = [params]
             return query, params
         elif operator == 'inselect':

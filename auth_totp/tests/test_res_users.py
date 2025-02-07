@@ -54,7 +54,7 @@ class TestResUsers(TransactionCase):
 
     def test_check_enabled_with_authenticator_mfa_no_auth(self):
         '''Should raise correct error if MFA enabled without authenticators'''
-        with self.assertRaisesRegexp(ValidationError, 'locked out'):
+        with self.assertRaisesRegex(ValidationError, 'locked out'):
             self.test_user.authenticator_ids = False
 
     def test_check_enabled_with_authenticator_no_mfa_auth(self):
@@ -261,9 +261,9 @@ class TestResUsers(TransactionCase):
         test_user_3 = self.env.ref('base.public_user')
         test_set = self.test_user + test_user_3
 
-        with self.assertRaisesRegexp(ValueError, 'Expected singleton'):
+        with self.assertRaisesRegex(ValueError, 'Expected singleton'):
             test_user_2.validate_mfa_confirmation_code('Test Code')
-        with self.assertRaisesRegexp(ValueError, 'Expected singleton'):
+        with self.assertRaisesRegex(ValueError, 'Expected singleton'):
             test_set.validate_mfa_confirmation_code('Test Code')
 
     @patch.object(ResUsersAuthenticator, 'validate_conf_code')

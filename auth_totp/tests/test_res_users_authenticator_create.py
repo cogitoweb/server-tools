@@ -91,7 +91,7 @@ class TestResUsersAuthenticatorCreate(TransactionCase):
         test_wiz = self._new_wizard()
         pyotp_mock.TOTP().verify.return_value = False
 
-        with self.assertRaisesRegexp(ValidationError, 'confirmation code'):
+        with self.assertRaisesRegex(ValidationError, 'confirmation code'):
             test_wiz._perform_validations()
 
     def test_perform_validations_right_confirmation(self, pyotp_mock):

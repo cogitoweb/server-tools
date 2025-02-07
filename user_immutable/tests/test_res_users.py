@@ -37,7 +37,7 @@ class TestResUsers(TransactionCase):
         self.user.write({'in_group_%s' % self.immutable.id: True})
         exp = 'Princess Peach'
         self.user.write({'name': exp})
-        self.assertEquals(self.user.name, exp)
+        self.assertEqual(self.user.name, exp)
 
     def test_immutable_cannot_be_unlinked(self):
         """ It should make sure non `Immutable` members cannot unlink other

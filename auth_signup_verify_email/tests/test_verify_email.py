@@ -2,7 +2,7 @@
 # © 2016 Jairo Llopis <jairo.llopis@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from urllib import urlencode
+from urllib.parse import urlencode
 from mock import patch
 from lxml.html import document_fromstring
 from odoo.tests.common import at_install, post_install, HttpCase

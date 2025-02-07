@@ -206,7 +206,7 @@ class KeychainAccount(models.Model):
     def _decode_password(cls, data):
         cipher = cls._get_cipher()
         try:
-            return unicode(cipher.decrypt(str(data)), 'UTF-8')
+            return str(cipher.decrypt(str(data)), 'UTF-8')
         except InvalidToken:
             raise UserError(_(
                 "Password has been encrypted with a different "

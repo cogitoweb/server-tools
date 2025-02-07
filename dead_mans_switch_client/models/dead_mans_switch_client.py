@@ -10,7 +10,7 @@ try:
     import psutil
 except ImportError:  # pragma: no cover
     psutil = None
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 from odoo import api, models
 from odoo.tools.config import config
 
@@ -72,8 +72,8 @@ class DeadMansSwitchClient(models.AbstractModel):
             'dead_mans_switch_client.send_timeout', SEND_TIMEOUT)
         data = self._get_data()
         logger.debug('sending %s', data)
-        urllib2.urlopen(
-            urllib2.Request(
+        urllib.request.urlopen(
+            urllib.request.Request(
                 url,
                 json.dumps({
                     'jsonrpc': '2.0',

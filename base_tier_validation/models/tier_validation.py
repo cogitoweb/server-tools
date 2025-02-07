@@ -90,7 +90,7 @@ class TierValidation(models.AbstractModel):
     def evaluate_tier(self, tier):
         try:
             res = safe_eval(tier.python_code, globals_dict={'rec': self})
-        except Exception, error:
+        except Exception as error:
             raise UserError(_(
                 "Error evaluating tier validation conditions.\n %s") % error)
         return res

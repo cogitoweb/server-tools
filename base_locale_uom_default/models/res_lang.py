@@ -43,7 +43,7 @@ class ResLang(models.Model):
         """
         if lang is None:
             lang = self.env.user.lang
-        if isinstance(lang, basestring):
+        if isinstance(lang, str):
             lang = self.env['res.lang'].search([
                 ('code', '=', lang),
             ],

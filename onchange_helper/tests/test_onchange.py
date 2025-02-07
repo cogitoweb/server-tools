@@ -21,6 +21,6 @@ class TestOnchange(common.TransactionCase):
             ['email'])
         self.assertEqual(
             result['rml_footer'],
-            u'Phone: +1 555 123 8069 | Email: contact@akretion.com | '
-            u'Website: http://www.example.com')
-        self.assertEqual(company.email, u'info@yourcompany.example.com')
+            'Phone: +1 555 123 8069 | Email: contact@akretion.com | '
+            'Website: http://www.example.com')
+        self.assertEqual(company.email, 'info@yourcompany.example.com')

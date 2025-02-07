@@ -13,7 +13,7 @@ class Base(models.AbstractModel):
     def _get_new_values(self, record, on_change_result):
         vals = on_change_result.get('value', {})
         new_values = {}
-        for fieldname, value in vals.iteritems():
+        for fieldname, value in vals.items():
             if fieldname not in record:
                 column = self._fields[fieldname]
                 if value and column.type == 'many2one':
@@ -46,6 +46,6 @@ class Base(models.AbstractModel):
             all_values.update(new_values)
 
         return {
-            f: v for f, v in all_values.iteritems()
+            f: v for f, v in all_values.items()
             if not (self._fields[f].compute and not self._fields[f].inverse)
             and (f in values or f in new_values)}

@@ -10,10 +10,10 @@ class ResUsers(models.Model):
     _inherit = 'res.users'
 
     role_line_ids = fields.One2many(
-        'res.users.role.line', 'user_id', string=u"Role lines",
+        'res.users.role.line', 'user_id', string="Role lines",
         default=lambda self: self._default_role_lines())
     role_ids = fields.One2many(
-        'res.users.role', string=u"Roles",
+        'res.users.role', string="Roles",
         compute='_compute_role_ids')
 
     @api.model

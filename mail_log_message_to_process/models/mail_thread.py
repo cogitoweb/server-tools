@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import email
-import xmlrpclib
+import xmlrpc.client
 import logging
 from email.message import Message
 from odoo import api, models
@@ -37,7 +37,7 @@ class MailThread(models.AbstractModel):
             'message_type': 'email',
         }
         if not isinstance(message, Message):
-            if isinstance(message, unicode):
+            if isinstance(message, str):
                 # Warning: message_from_string doesn't always work
                 # correctly on unicode, we must use utf-8 strings here :-(
                 message = message.encode('utf-8')
@@ -63,11 +63,11 @@ class MailThread(models.AbstractModel):
                         save_original=False, strip_attachments=False,
                         thread_id=None):
 
-        if isinstance(message, xmlrpclib.Binary):
+        if isinstance(message, xmlrpc.client.Binary):
             message = str(message.data)
         # Warning: message_from_string doesn't always work correctly on
         # unicode, we must use utf-8 strings here :-(
-        if isinstance(message, unicode):
+        if isinstance(message, str):
             message = message.encode('utf-8')
         msg_txt = email.message_from_string(message)
         msg = self.message_parse_basic_data(msg_txt)

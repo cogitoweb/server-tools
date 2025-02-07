@@ -20,14 +20,14 @@ class UnquoteObject(str):
                 ','.join(
                     [
                         UnquoteObject(
-                            a if not isinstance(a, basestring)
+                            a if not isinstance(a, str)
                             else "'%s'" % a
                         )
                         for a in args
                     ] +
                     [
                         '%s=%s' % (UnquoteObject(k), v)
-                        for (k, v) in kwargs.iteritems()
+                        for (k, v) in kwargs.items()
                     ]
                 )
             )
@@ -162,5 +162,5 @@ class IrUiView(models.Model):
             old_values = (node.get(attribute_name) or '').split(',')
             remove_values = attribute_node.text.split(',')
             new_values = [x for x in old_values if x not in remove_values]
-            node.attrib[attribute_name] = ','.join(filter(None, new_values))
+            node.attrib[attribute_name] = ','.join([_f for _f in new_values if _f])
         return source

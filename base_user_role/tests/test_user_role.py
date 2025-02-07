@@ -18,13 +18,13 @@ class TestUserRole(TransactionCase):
 
         self.default_user = self.env.ref('base.default_user')
         self.user_id = self.user_model.create(
-            {'name': u"USER TEST (ROLES)", 'login': 'user_test_roles'})
+            {'name': "USER TEST (ROLES)", 'login': 'user_test_roles'})
 
         # ROLE_1
         self.group_user_id = self.env.ref('base.group_user')
         self.group_no_one_id = self.env.ref('base.group_no_one')
         vals = {
-            'name': u"ROLE_1",
+            'name': "ROLE_1",
             'implied_ids': [
                 (6, 0, [self.group_user_id.id, self.group_no_one_id.id])],
         }
@@ -35,7 +35,7 @@ class TestUserRole(TransactionCase):
             'base.group_multi_currency')
         self.group_settings_id = self.env.ref('base.group_system')
         vals = {
-            'name': u"ROLE_2",
+            'name': "ROLE_2",
             'implied_ids': [
                 (6, 0, [self.group_multi_currency_id.id,
                         self.group_settings_id.id])],
@@ -126,7 +126,7 @@ class TestUserRole(TransactionCase):
             'role_id': self.role2_id.id,
             'company_id': self.company2.id})]})
         # Check that user does not have any groups
-        self.assertEquals(
+        self.assertEqual(
             self.user_id.groups_id, self.env['res.groups'].browse())
 
     def test_user_role_same_company(self):

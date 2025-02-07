@@ -85,7 +85,7 @@ class TestMassEditing(common.TransactionCase):
         """Create a Mass Editing with Partner as model and
         email field of partner."""
         mass = self.mass_object_model.create({
-            'name': u'Mass Editing for {0}'.format(model_name),
+            'name': 'Mass Editing for {0}'.format(model_name),
             'model_id': model.id,
             'field_ids': [(6, 0, fields.ids)]
         })

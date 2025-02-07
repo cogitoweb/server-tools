@@ -4,7 +4,7 @@
 
 import base64
 import hashlib
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
 from odoo import api, models
 from odoo.exceptions import Warning as UserError
@@ -18,10 +18,10 @@ class ResUsers(models.Model):
         url = 'https://www.gravatar.com/avatar/{}?s=200'
         _hash = hashlib.md5(email).hexdigest()
         try:
-            res = urllib2.urlopen(url.format(_hash))
+            res = urllib.request.urlopen(url.format(_hash))
             raw_image = res.read()
             return base64.encodestring(raw_image)
-        except urllib2.HTTPError:
+        except urllib.error.HTTPError:
             raise UserError(_('Sorry Gravatar not found.'))
 
     @api.multi

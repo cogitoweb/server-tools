@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from threading import current_thread
-from urllib import urlencode
+from urllib.parse import urlencode
 
 from decorator import decorator
 from mock import patch

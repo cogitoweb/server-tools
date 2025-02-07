@@ -75,7 +75,7 @@ class TestResUsers(Common):
         u = self._create_test_user()
         ret = u.fields_view_get(view.id)
         doc = etree.XML(ret['arch'])
-        self.assertEquals(doc.xpath("//group[@name='user_threshold']"), [])
+        self.assertEqual(doc.xpath("//group[@name='user_threshold']"), [])
 
     def test_cannot_write_exempt(self):
         """
@@ -96,7 +96,7 @@ class TestResUsers(Common):
         self._add_user_to_group(u)
         tu = self._create_test_user()
         tu.sudo(u.id).write({'threshold_exempt': True})
-        self.assertEquals(tu.threshold_exempt, True)
+        self.assertEqual(tu.threshold_exempt, True)
 
     def test_cannot_write_group(self):
         """
@@ -122,6 +122,6 @@ class TestResUsers(Common):
         tu = self._create_test_user()
         th_group = self.env.ref('user_threshold.group_threshold_manager')
         tu.sudo(u.id).write({'in_group_%s' % th_group.id: True})
-        self.assertEquals(
+        self.assertEqual(
             tu.has_group('user_threshold.group_threshold_manager'), True
         )

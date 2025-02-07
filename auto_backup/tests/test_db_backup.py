@@ -62,7 +62,7 @@ class TestDbBackup(common.TransactionCase):
 
     def new_record(self, method='sftp'):
         vals = {
-            'name': u'Têst backup',
+            'name': 'Têst backup',
             'method': method,
         }
         if method == 'sftp':
