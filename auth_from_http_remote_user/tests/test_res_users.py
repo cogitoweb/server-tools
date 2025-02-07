@@ -19,7 +19,7 @@
 #
 ##############################################################################
 
-from openerp.tests import common
+from odoo.tests import common
 import mock
 import os
 from contextlib import contextmanager

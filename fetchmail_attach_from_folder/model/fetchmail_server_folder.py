@@ -19,7 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ########################################################################
-from openerp import api, models, fields
+from odoo import api, models, fields
 from .. import match_algorithm
 
 

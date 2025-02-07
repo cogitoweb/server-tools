@@ -18,9 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models, fields, api, exceptions
-from openerp.tools.safe_eval import safe_eval
-from openerp import _
+from odoo import models, fields, api, exceptions
+from odoo.tools.safe_eval import safe_eval
+from odoo import _
 
 
 class res_groups(models.Model):

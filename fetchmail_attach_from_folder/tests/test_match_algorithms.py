@@ -18,9 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import models
-from openerp.tests.common import TransactionCase
-from openerp.addons.fetchmail_attach_from_folder.match_algorithm import (
+from odoo import models
+from odoo.tests.common import TransactionCase
+from odoo.addons.fetchmail_attach_from_folder.match_algorithm import (
     email_exact, email_domain, openerp_standard)
 
 

@@ -18,8 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp.addons.web.http import WebRequest, JsonRequest
-from openerp.addons.web.controllers import main as web_main
+from odoo.addons.web.http import WebRequest, JsonRequest
+from odoo.addons.web.controllers import main as web_main
 
 old_init = WebRequest.init
 

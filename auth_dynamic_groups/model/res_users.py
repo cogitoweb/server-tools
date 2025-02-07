@@ -18,9 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp.models import Model
-from openerp.modules.registry import RegistryManager
-from openerp import SUPERUSER_ID
+from odoo.models import Model
+from odoo.modules.registry import RegistryManager
+from odoo import SUPERUSER_ID
 
 
 class res_users(Model):

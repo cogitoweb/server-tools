@@ -4,7 +4,7 @@
 
 from datetime import datetime, timedelta
 import json
-from werkzeug.contrib.securecookie import SecureCookie
+from secure_cookie.cookie import SecureCookie
 from werkzeug.wrappers import Response as WerkzeugResponse
 from odoo import _, http
 from odoo.http import Response, request

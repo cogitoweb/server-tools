@@ -21,7 +21,7 @@
 
 import sys
 from datetime import datetime
-from openerp.osv import orm, fields
+from odoo.osv import orm, fields
 import logging
 _logger = logging.getLogger(__name__)
 _loglvl = _logger.getEffectiveLevel()

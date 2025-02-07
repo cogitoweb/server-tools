@@ -19,11 +19,11 @@
 #
 ##############################################################################
 
-from openerp.modules.registry import RegistryManager
-from openerp.osv import orm, fields
-from openerp import SUPERUSER_ID
+from odoo.modules.registry import RegistryManager
+from odoo.osv import orm, fields
+from odoo import SUPERUSER_ID
 import openerp.exceptions
-from openerp.addons.auth_from_http_remote_user import utils
+from odoo.addons.auth_from_http_remote_user import utils
 
 
 class res_users(orm.Model):

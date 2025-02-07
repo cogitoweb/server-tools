@@ -32,7 +32,7 @@ Usage
 
 Inherit the model:
 
-    from openerp import models
+    from odoo import models
 
     class MyModel(models.model)
         _name = 'my.model'

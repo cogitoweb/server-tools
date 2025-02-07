@@ -23,10 +23,10 @@ import logging
 import base64
 import simplejson
 from lxml import etree
-from openerp import models, fields, api, exceptions
-from openerp.tools.translate import _
-from openerp.tools.safe_eval import safe_eval
-from openerp.tools.misc import UnquoteEvalContext
+from odoo import models, fields, api, exceptions
+from odoo.tools.translate import _
+from odoo.tools.safe_eval import safe_eval
+from odoo.tools.misc import UnquoteEvalContext
 _logger = logging.getLogger(__name__)
 
 

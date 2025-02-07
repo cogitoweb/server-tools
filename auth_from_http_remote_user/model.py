@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp.osv import orm
+from odoo.osv import orm
 
 
 class AuthFromHttpRemoteUserInstalled(orm.AbstractModel):

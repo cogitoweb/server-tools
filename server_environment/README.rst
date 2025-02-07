@@ -59,7 +59,7 @@ Usage
 
 To use this module, in your code, you can follow this example::
 
-    from openerp.addons.server_environment import serv_config
+    from odoo.addons.server_environment import serv_config
     for key, value in serv_config.items('external_service.ftp'):
        print (key, value)
 

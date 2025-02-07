@@ -19,13 +19,13 @@
 #
 ##############################################################################
 
-from openerp import SUPERUSER_ID
+from odoo import SUPERUSER_ID
 
 import openerp
-from openerp import http
-from openerp.http import request
-from openerp.addons.web.controllers import main
-from openerp.addons.auth_from_http_remote_user.model import \
+from odoo import http
+from odoo.http import request
+from odoo.addons.web.controllers import main
+from odoo.addons.auth_from_http_remote_user.model import \
     AuthFromHttpRemoteUserInstalled
 from .. import utils
 
