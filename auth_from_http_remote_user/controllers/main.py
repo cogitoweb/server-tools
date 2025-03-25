@@ -21,7 +21,7 @@
 
 from odoo import SUPERUSER_ID
 
-import openerp
+from odoo
 from odoo import http
 from odoo.http import request
 from odoo.addons.web.controllers import main

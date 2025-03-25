@@ -22,7 +22,7 @@
 from odoo.modules.registry import RegistryManager
 from odoo.osv import orm, fields
 from odoo import SUPERUSER_ID
-import openerp.exceptions
+from odoo.exceptions
 from odoo.addons.auth_from_http_remote_user import utils
 
 
