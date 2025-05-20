@@ -378,12 +378,12 @@ class AuditlogRule(models.Model):
             diff = DictDiffer(
                 new_values.get(res_id, EMPTY_DICT),
                 old_values.get(res_id, EMPTY_DICT))
-            if method is 'create':
+            if method == 'create':
                 self._create_log_line_on_create(log, diff.added(), new_values)
-            elif method is 'read':
+            elif method == 'read':
                 self._create_log_line_on_read(
                     log, list(old_values.get(res_id, EMPTY_DICT).keys()), old_values)
-            elif method is 'write':
+            elif method == 'write':
                 self._create_log_line_on_write(
                     log, diff.changed(), old_values, new_values)
 
