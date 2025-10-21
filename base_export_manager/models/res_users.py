@@ -14,9 +14,11 @@ class ResUsers(models.Model):
         accessobj = self.env['ir.model.access']
         accessobj_ids = accessobj.search([
             ('perm_export', '=', True),
+            '|',
             ('group_id', 'in', self.env.user.groups_id.ids),
+            ('group_id', '=', False)
         ])
         model_names = [
             access_obj.model_id.model for access_obj in accessobj_ids
-            ]
+        ]
         return list(set(model_names))
