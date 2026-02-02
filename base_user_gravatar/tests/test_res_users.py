@@ -43,7 +43,7 @@ class TestResUsers(TransactionCase):
     def test_get_gravatar_base64_returns_encoded_image(self, mk, b64_mk, ):
         """ Test that image result is read """
         expect = 'Expect'
-        b64_mk.encodestring.return_value = expect
+        b64_mk.encodebytes.return_value = expect
         result = self.model_obj._get_gravatar_base64(
             self.partner_vals['email']
         )

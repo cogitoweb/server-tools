@@ -85,7 +85,7 @@ class PrototypeModuleExport(models.TransientModel):
             {
                 'name': '%s.zip' % (zip_name,),
                 'state': 'get',
-                'data': base64.encodestring(zip_details.stringIO.getvalue())
+                'data': base64.encodebytes(zip_details.stringIO.getvalue())
             }
         )
 

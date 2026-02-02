@@ -20,7 +20,7 @@ class ResUsers(models.Model):
         try:
             res = urllib.request.urlopen(url.format(_hash))
             raw_image = res.read()
-            return base64.encodestring(raw_image)
+            return base64.encodebytes(raw_image)
         except urllib.error.HTTPError:
             raise UserError(_('Sorry Gravatar not found.'))
 
